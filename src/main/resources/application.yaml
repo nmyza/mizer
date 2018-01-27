@@ -1,0 +1,46 @@
+logging:
+  level:
+    .: error
+    org.springframework: ERROR
+    com.mkyong: ERROR
+
+spring:
+  profiles:
+    active: "prod"
+  main:
+    banner-mode: "off"
+
+name: Default name
+
+server:
+  email: default@ukr.net
+
+---
+
+spring:
+  profiles: dev
+server:
+  email: dev@ukr.net
+  cluster:
+    - ip: 127.0.0.1
+      path: /dev1
+    - ip: 127.0.0.2
+      path: /dev2
+    - ip: 127.0.0.3
+      path: /dev3
+name: Developer Setup
+
+---
+
+spring:
+  profiles: prod
+server:
+  email: prod@ukr.net
+  cluster:
+    - ip: 192.168.0.1
+      path: /app1
+    - ip: 192.168.0.2
+      path: /app2
+    - ip: 192.168.0.3
+      path: /app3
+name: My Cool App
